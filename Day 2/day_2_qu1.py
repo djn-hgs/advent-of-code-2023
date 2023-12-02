@@ -13,6 +13,7 @@ game_sum = 0
 with open('input.txt', 'r') as file:
     for line in file.readlines():
 
+
         [(game_num, game)] = game_regex.findall(line)
 
         print(f'Game {game_num}: {game}')
@@ -21,9 +22,11 @@ with open('input.txt', 'r') as file:
 
         print(hands)
 
-        counters = {color: 0 for color in block_re}
+        possible = True
 
         for hand in hands:
+            counters = {color: 0 for color in block_re}
+
             blocks = hand.split(',')
 
             for block in blocks:
@@ -35,10 +38,13 @@ with open('input.txt', 'r') as file:
                         [count] = regex.findall(block)
                         print(f'{color} matches {count}')
 
-                        if int(count) > counters[color]:
-                            counters[color] = int(count)
+                        counters[color] += int(count)
 
-        game_sum += counters['red'] * counters['green'] * counters['blue']
+            if counters['red'] > 12 or counters['green'] > 13 or counters['blue'] > 14:
+                possible = False
+
+        if possible:
+            game_sum += int(game_num)
 
 
 print(game_sum)
