@@ -19,3 +19,15 @@ I always take a while to remember that splitting on a character is stupidly fidd
 ### Part 2
 
 The choice of data structure in Part 1 paid off. It took about two tweaks to the existing code to finish off Qu2.
+
+## Day 3
+
+### Part 1
+
+Oh goody, more parsing with `regex`. So, spent some time thinking how the data might be useful in part 2 and so decided to store all possible information about the values and their locations. Not that it particularly helped. Anyway, it was a fairly easy puzzle to solve and the `regex` tricks that I learned will certainly come in useful.
+
+### Part 2
+
+So this part wasn't much harder than [Part 1]() and a slight tweak to my slightly mad data structures from the first part enabled me to store the location of all asterisks and all values. Got the correct demo on the test data after realising one small error in my match spans... and then it failed on the real input. Tried a few test cases and couldn't solve the problem, so eventually looked down to see what it _wasn't_ spotting. It seemed to be spotting everything that it should. So then I looked for anything it _was_ spotting that it shouldn't... and realised that my original debug had omitted one `+1` which meant that it was over-matching one case, and therefore not including a ratio because I was matching 3 values when it should have been 2.
+
+Doh.
