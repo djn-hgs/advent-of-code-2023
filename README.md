@@ -28,6 +28,12 @@ Oh goody, more parsing with `regex`. So, spent some time thinking how the data m
 
 ### Part 2
 
-So this part wasn't much harder than [Part 1]() and a slight tweak to my slightly mad data structures from the first part enabled me to store the location of all asterisks and all values. Got the correct demo on the test data after realising one small error in my match spans... and then it failed on the real input. Tried a few test cases and couldn't solve the problem, so eventually looked down to see what it _wasn't_ spotting. It seemed to be spotting everything that it should. So then I looked for anything it _was_ spotting that it shouldn't... and realised that my original debug had omitted one `+1` which meant that it was over-matching one case, and therefore not including a ratio because I was matching 3 values when it should have been 2.
+So this part wasn't much harder than [Part 1]() and a tweak to my slightly mad data structures from the first part enabled me to store the location of all asterisks and all values.
+
+Got the correct value on the demo data after realising one small error in my match spans... and then it failed on the real input.
+
+Tried a few test cases and couldn't solve the problem, so eventually looked down to see what it _wasn't_ spotting. It seemed to be spotting everything that it should.
+
+So then I looked for anything it _was_ spotting that it shouldn't... and realised that my original debug had omitted one `+ 1` which meant that it was over-matching one case (which I thought I had already spotted and sorted and therefore discounted from my testing)... and therefore not including a ratio because I was matching 3 values when it should have been 2.
 
 Doh.
