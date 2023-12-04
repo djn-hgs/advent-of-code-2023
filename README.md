@@ -37,3 +37,15 @@ Tried a few test cases and couldn't solve the problem, so eventually looked down
 So then I looked for anything it _was_ spotting that it shouldn't... and realised that my original debug had omitted one `+ 1` which meant that it was over-matching one case (which I thought I had already spotted and sorted and therefore discounted from my testing)... and therefore not including a ratio because I was matching 3 values when it should have been 2.
 
 Doh.
+
+## Day 4
+
+### Part 1
+
+Yet more `regex` to sort the parsing. Quite enjoyed that. Whoop. Realised that the problem was then solved with some set intersections and that was that.
+
+### Part 2
+
+If I'd created the dictionary that I'd thought of creating in [Part 1]() then this would have been trivial. As it was, following the explanation on the site suggested a simple, non-recursive, solution that worked perfectly... or would have done if I hadn't messed up my indexing AGAIN. Lesson learned.
+
+Just read the post about not including my inputs in my repos so time to fiddle with some `.gitignore` files.
