@@ -48,4 +48,6 @@ Yet more `regex` to sort the parsing. Quite enjoyed that. Whoop. Realised that t
 
 If I'd created the dictionary that I'd thought of creating in [Part 1]() then this would have been trivial. As it was, following the explanation on the site suggested a simple, non-recursive, solution that worked perfectly... or would have done if I hadn't messed up my indexing AGAIN. Lesson learned.
 
+## Note about `input.txt` files
+
 Just read the post about not including my inputs in my repos so time to fiddle with some `.gitignore` files.

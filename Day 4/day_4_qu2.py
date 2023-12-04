@@ -39,15 +39,15 @@ for i in card_nums:
     print(f'Processing card {i} with {match_dict[i]} matches ({my_cards[i]} repetitions)')
 
     if match_dict[i] == 0:
-        print('Nothing to do')
+        print('Nothing to do: no winning numbers.')
     else:
 
         for j in range(match_dict[i]):
-            if i + j + 1 <= len(my_cards):
+            if i + j + 1 in my_cards:
                 print(f'Card {i + j + 1} times {my_cards[i]}')
                 my_cards[i + j + 1] += my_cards[i]
             else:
-                print('Doh')
+                print('Doh: nowhere to look.')
 
 print(sum(my_cards.values()))
 
