@@ -51,3 +51,17 @@ If I'd created the dictionary that I'd thought of creating in [Part 1]() then th
 ## Note about `input.txt` files
 
 Just read the post about not including my inputs in my repos so time to fiddle with some `.gitignore` files.
+
+## Day 5
+
+### Part 1
+
+Had some fun using dictionaries to store the transformations and then applied these in sequence to work out the answer.
+
+### Part 2
+
+The solution here was fairly obvious: store the ranges in the question and then map those using the described transformations. It got quite fiddly using dictionaries, so I used some dataclasses to store things nicely and to make debugging easier. Managed to get myself confused by the possibility of overlapping ranges - which didn't occur in the question - and once I'd discounted this the code ran straight through.
+
+## Day 6
+
+I feel slightly guilty here: rather than using Python to produce all possible matches by sieving, I just solved a quadratic and then adjusted for the case where we had integer limits (so the discriminant was a perfect square). On that basis, part 2 was no harder than part 1.
