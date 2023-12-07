@@ -15,9 +15,9 @@ class Pattern:
     def fingerprint(self):
         letters = set(self.text)
 
-        letters_in_order = sorted(letters, key=self.text.count, reverse=True)
+        in_order = sorted(letters, key=self.text.count, reverse=True)
 
-        fingerprint = [self.text.count(a) for a in letters_in_order]
+        fingerprint = [self.text.count(a) for a in in_order]
 
         j_count = self.text.count('J')
 
