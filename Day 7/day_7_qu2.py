@@ -33,11 +33,12 @@ class Pattern:
 
         return fingerprint
 
+    @property
     def card_values(self):
         return [CARDS.index(a) for a in self.text]
 
     def __lt__(self, other):
-        return (self.fingerprint, self.card_values()) < (other.fingerprint, other.card_values())
+        return (self.fingerprint, self.card_values) < (other.fingerprint, other.card_values)
 
 
 patterns = []
