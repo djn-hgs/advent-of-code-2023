@@ -6,7 +6,7 @@ import re
 
 line_split = re.compile(r'(.+)\s(.+)')
 
-CARDS = 'J23456789TQKA'
+CARDS = '23456789TJQKA'
 
 CARD_WEIGHT = {a: CARDS.index(a) + 1 for a in CARDS}
 
@@ -33,20 +33,9 @@ class Pattern:
         letters_in_order = sorted(letters, key=self.text.count)
         fingerprint = [self.text.count(a) for a in letters_in_order]
 
-        j_count = self.text.count('J')
+        print(letters_in_order, fingerprint)
 
-        if 0 < j_count < 5:
-
-            without = letters.difference({'J'})
-            without_in_order = sorted(without, key=self.text.count)
-
-            fingerprint_without = [self.text.count(a) for a in without_in_order]
-
-            fingerprint_without[-1] += j_count
-
-            return FINGERPRINT_WEIGHT.index(fingerprint_without)
-        else:
-            return FINGERPRINT_WEIGHT.index(fingerprint)
+        return FINGERPRINT_WEIGHT.index(fingerprint)
 
     def card_values(self):
         return [CARDS.index(a) for a in self.text]
