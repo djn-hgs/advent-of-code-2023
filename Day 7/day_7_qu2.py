@@ -25,9 +25,9 @@ class Pattern:
 
             without = letters.difference({'J'})
 
-            without_in_order = sorted(without, key=self.text.count, reverse=True)
+            w_in_order = sorted(without, key=self.text.count, reverse=True)
 
-            fingerprint = [self.text.count(a) for a in without_in_order]
+            fingerprint = [self.text.count(a) for a in w_in_order]
 
             fingerprint[0] += j_count
 
