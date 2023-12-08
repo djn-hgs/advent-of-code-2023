@@ -65,3 +65,23 @@ The solution here was fairly obvious: store the ranges in the question and then 
 ## Day 6
 
 I feel slightly guilty here: rather than using Python to produce all possible matches by sieving, I just solved a quadratic and then adjusted for the case where we had integer limits (so the discriminant was a perfect square). On that basis, part 2 was no harder than part 1.
+
+## Day 7
+
+### Part 1
+
+Confused myself by trying to work out how to regex the various hands and then gave up and just wrote some rough and ready functions that matched them. With that in place it was then just a case of sorting on the basis of the "weights" of the various hands and then working out the right way to handle a tie-breaker. I realised, whilst doing part 2, that the whole thing was trivial if we just created a histogram of letter frequencies and then sorted lexicographically on that. Hey ho.
+
+### Part 2
+
+Initially I just worked out the effect of substituting the known number of 'J' cards for the dominant other card, but then realised that calculating a histogram with and without the 'J' present then allowed us to work out the additional score that could be achieved by using it as a wildcard.
+
+## Day 8
+
+### Part 1
+
+Initially it looked like a `Tree` class might be the way in, but then I realised that this was better understood as something akin to a Lindenmayer 'L-System'. Then it was just a case of tracking the journey of a node starting at 'AAA' until it landed at 'ZZZ'
+
+### Part 2
+
+Once I'd understood the scenario, a small amount of `regex` enabled me to tweak the previous code to find all the starting nodes and to match all the ending nodes. It was pretty obvious that we wanted to use `lcm` rather than trying to traverse them all simultaneously.
