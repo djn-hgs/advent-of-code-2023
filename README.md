@@ -85,3 +85,11 @@ Initially it looked like a `Tree` class might be the way in, but then I realised
 ### Part 2
 
 Once I'd understood the scenario, a small amount of `regex` enabled me to tweak the previous code to find all the starting nodes and to match all the ending nodes. It was pretty obvious that we wanted to use `lcm` rather than trying to traverse them all simultaneously.
+
+## Update on `input.txt`
+
+Just realised that `.gitignore` parses wildcards in the obvious way, so this is now the only line in my `.gitignore` file:
+
+```
+/*/input.txt
+```
