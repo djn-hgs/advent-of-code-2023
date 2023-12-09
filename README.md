@@ -93,3 +93,11 @@ Just realised that `.gitignore` parses wildcards in the obvious way, so this is 
 ```
 /*/input.txt
 ```
+
+## Day 9
+
+No parsing!
+
+But a good chance to combine some list comprehension and recursion. Judicious combination of the `zip` function with some slicing meant that the two parts just dropped.
+
+Next job is to do this in Haskell. But I'm not taking up Mr Dales' to tackle them all in Haskell henceforth!
