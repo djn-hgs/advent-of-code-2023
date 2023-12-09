@@ -1,10 +1,10 @@
 def next_value(last_line):
-    if all([v == 0 for v in last_line]):
-        return 0
-    else:
+    if any(last_line):
         next_line = [b - a for (a, b) in zip(last_line[:-1], last_line[1:])]
 
         return last_line[-1] + next_value(next_line)
+    else:
+        return 0
 
 sum = 0
 
