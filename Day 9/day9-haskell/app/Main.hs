@@ -3,12 +3,12 @@ module Main (main) where
 import Data.List.Split
 
 strToInt :: String -> Int
-strToInt x = read x
+strToInt = read
 
 getNext :: [Int] -> Int
 getNext theList
    | all (==0) theList = 0
-   | otherwise = last theList + (getNext (zipWith (-) (tail theList) theList))
+   | otherwise = last theList + getNext (zipWith (-) (tail theList) theList)
 
 
 main :: IO ()
