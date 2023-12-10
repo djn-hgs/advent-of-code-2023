@@ -10,6 +10,8 @@ The recommended solution seemed to be to use the IntelliJ IDE and to manage the 
 
 The question is whether this is a repeatable experiment...
 
+Seemingly IntelliJ isn't too happy with creating the `Stack` environment, but it's pretty trivial to create from the command line and then import into IntelliJ. So that'll do for now.
+
 ## Coding
 
 I'm still learning...
