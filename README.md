@@ -101,3 +101,13 @@ No parsing!
 But a good chance to combine some list comprehension and recursion. Judicious combination of the `zip` function with some slicing meant that the two parts just dropped.
 
 Next job is to do this in Haskell. But I'm not taking up Mr Dales' to tackle them all in Haskell henceforth!
+
+## Day 10
+
+### Part 1
+
+Yay, no parsing once more. So this was obviously going to come from a Depth First Traversal, and thus I implemented the usual stack-based DFT and got the wrong answer... I was marking nodes as "visited" at the wrong time and so miscounting badly. Did a bit of thinking and then all was well. My code is nasty and I'm not very happy with it.
+
+### Part 2
+
+After considering some classic flood-fill algorithms, I then realised that this was just a parity game. All was going well until I fell down a rabbit-hole trying to replace the `S` symbol with the correct symbol for the pipe it was representing. For the sake of my sanity I eventually just looked at my own input file and realised that it was a `|` symbol but there is a little bit of work to be done coming up with a quick way to do this properly... but not now.
