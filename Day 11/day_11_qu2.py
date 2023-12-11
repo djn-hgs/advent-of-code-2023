@@ -1,8 +1,8 @@
 import math
 
 stars: [tuple[int, int]] = []
-used_rows: {int} = {}
-used_columns: {int} = {}
+used_rows: set[int] = set()
+used_columns: set[int] = set()
 
 # This was 2 in qu 1. It is the only change
 
@@ -18,8 +18,8 @@ with open('input.txt', 'r') as lines:
 
         for col_num, symbol in enumerate(line):
             if symbol == '#':
-                used_rows[row_num] = True
-                used_columns[col_num] = True
+                used_rows.add(row_num)
+                used_columns.add(col_num)
                 stars.append((col_num, row_num))
 
 
