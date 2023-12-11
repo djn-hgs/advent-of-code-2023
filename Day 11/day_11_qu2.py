@@ -1,15 +1,15 @@
 import math
 
-stars = []
-used_rows = {}
-used_columns = {}
+stars: [tuple[int, int]] = []
+used_rows: {int} = {}
+used_columns: {int} = {}
 
-# This was 2 in qu 1
+# This was 2 in qu 1. It is the only change
 
-gap_height = 1000000
+GAP_HEIGHT: int = 1000000
 
-height = 0
-width = 0
+height: int = 0
+width: int = 0
 
 with open('input.txt', 'r') as lines:
     for i, line in enumerate(lines):
@@ -23,46 +23,36 @@ with open('input.txt', 'r') as lines:
                 stars.append((j, i))
 
 
-def galaxy_dist(x, y):
-
-    x = abs(x)
-    y = abs(y)
-
-    min_diff = min(x, y)
-    max_diff = max(x, y)
+def raster_dist(x1: int, y1: int, x2: int, y2: int):
+    min_diff = min(abs(x2 - x1), abs(y2 - y1))
+    max_diff = max(abs(x2 - x1), abs(y2 - y1))
 
     if min_diff == 0:
-        return max_diff - 1
-    elif min_diff == 1:
         return max_diff
+    elif min_diff == 1:
+        return max_diff + 1
     else:
 
-        step_length = math.floor(max_diff / (min_diff - 1))
+        step_length: int = math.floor(max_diff / (min_diff - 1))
 
-        achieved = (min_diff - 1) * step_length
+        additional: int = max_diff - (min_diff - 1) * step_length
 
-        additional = max_diff - achieved
-
-        return (step_length + 1) * (min_diff - 1) + additional
+        return (step_length + 1) * (min_diff - 1) + additional + 1
 
 
-distance_sum = 0
+def get_pos(x, y):
+    return (
+        x + (x - len([j for j in used_columns if j < x])) * (GAP_HEIGHT - 1),
+        y + (y - len([i for i in used_rows if i < y])) * (GAP_HEIGHT - 1)
+    )
 
-unused_rows = [i for i in range(height) if i not in used_rows]
-unused_columns = [j for j in range(width) if j not in used_columns]
+
+distance_sum: int = 0
+
 
 for i in range(len(stars) - 1):
     for j in range(i + 1, len(stars)):
-        x1, y1 = stars[i]
-        x2, y2 = stars[j]
 
-        x1 = x1 + len([j for j in unused_columns if j < x1]) * (gap_height - 1)
-        x2 = x2 + len([j for j in unused_columns if j < x2]) * (gap_height - 1)
-        y1 = y1 + len([i for i in unused_rows if i < y1]) * (gap_height - 1)
-        y2 = y2 + len([i for i in unused_rows if i < y2]) * (gap_height - 1)
-
-        dist = galaxy_dist(x2 - x1, y2 - y1) + 1
-
-        distance_sum += dist
+        distance_sum += raster_dist(*get_pos(*stars[i]), *get_pos(*stars[j]))
 
 print(distance_sum)
