@@ -29,10 +29,11 @@ def raster_dist(x1: int, y1: int, x2: int, y2: int):
 
     if min_diff == 0:
         return max_diff
+
     elif min_diff == 1:
         return max_diff + 1
-    else:
 
+    else:
         step_length: int = math.floor(max_diff / (min_diff - 1))
 
         additional: int = max_diff - (min_diff - 1) * step_length
@@ -47,12 +48,11 @@ def get_pos(x, y):
     )
 
 
-distance_sum: int = 0
-
-
-for i in range(len(stars) - 1):
-    for j in range(i + 1, len(stars)):
-
-        distance_sum += raster_dist(*get_pos(*stars[i]), *get_pos(*stars[j]))
+distance_sum = sum(
+    raster_dist(*get_pos(*s), *get_pos(*t))
+    for s in stars
+    for t in stars
+    if s < t
+)
 
 print(distance_sum)
