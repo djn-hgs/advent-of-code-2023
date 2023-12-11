@@ -12,15 +12,15 @@ height: int = 0
 width: int = 0
 
 with open('input.txt', 'r') as lines:
-    for i, line in enumerate(lines):
+    for row_num, line in enumerate(lines):
         height += 1
         width = max(width, len(line))
 
-        for j, symbol in enumerate(line):
+        for col_num, symbol in enumerate(line):
             if symbol == '#':
-                used_rows[i] = True
-                used_columns[j] = True
-                stars.append((j, i))
+                used_rows[row_num] = True
+                used_columns[col_num] = True
+                stars.append((col_num, row_num))
 
 
 def raster_dist(x1: int, y1: int, x2: int, y2: int):
