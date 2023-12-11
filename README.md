@@ -102,6 +102,10 @@ But a good chance to combine some list comprehension and recursion. Judicious co
 
 Next job is to do this in Haskell. But I'm not taking up Mr Dales' to tackle them all in Haskell henceforth!
 
+### Update
+
+Haskell solution also included. Had to do quite a lot of work to understand how to achieve the text splitting, so it was good fun. Notes are in the folder [here](Day 9/day9-haskell/README.md).
+
 ## Day 10
 
 ### Part 1
@@ -111,3 +115,13 @@ Yay, no parsing once more. So this was obviously going to come from a Depth Firs
 ### Part 2
 
 After considering some classic flood-fill algorithms, I then realised that this was just a parity game. All was going well until I fell down a rabbit-hole trying to replace the `S` symbol with the correct symbol for the pipe it was representing. For the sake of my sanity I eventually just looked at my own input file and realised that it was a `|` symbol but there is a little bit of work to be done coming up with a quick way to do this properly... but not now.
+
+## Day 11
+
+### Part 1
+
+Spent far too long trying to debug my raster-distance calculations only to realise that I hadn't read the question properly: I'd doubled distances vertically but not horizontally. Once this was tweaked, the calculations dropped out nicely.
+
+### Part 2
+
+Pay-back for using a calculated approach in [part 1](). All I had to do was replace the number `2` with `1000000`.
