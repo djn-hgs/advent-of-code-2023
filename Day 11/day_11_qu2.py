@@ -1,5 +1,3 @@
-import math
-
 # This was 2 in qu 1. It is the only change
 
 GAP_HEIGHT: int = 1000000
@@ -13,9 +11,6 @@ with open('input.txt', 'r') as lines:
 
 used_rows = {y for (_, y) in stars}
 used_columns = {x for (x, _) in stars}
-
-width = max(used_columns)
-height = max(used_rows)
 
 
 def taxi_dist(x1, y1, x2, y2):
