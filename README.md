@@ -130,8 +130,10 @@ Pay-back for using a calculated approach in [part 1](). All I had to do was repl
 
 ### Part 1
 
-Had a nice recursive approach here, but tied myself in knots trying to deal with base-cases. Got there in the end and it worked just fine. I was desperately hoping that part 2 wasn't going to be a scaled up version...
+Had a nice recursive approach here, but tied myself in knots trying to deal with base-cases. Got there in the end and it worked just fine. Having used lists to store the spring patterns, I hit a problem with hashing and thus flipped back to using strings. I was desperately hoping that part 2 wasn't going to be a scaled up version...
 
 ### Part 2
 
-Really couldn't see how to get the code to optimise, but a hint to use memoization sent me in the right direction. Had a slight issue because I needed to memo-ize against patterns and lists, but that was easily resolved by converting my length lists to tuples. The memo dictionary was pretty huge: 154748 items.
+Oh well... I really couldn't see how to get the code to optimise, but a hint to use memoization sent me in the right direction. Had a slight issue because I needed to memo-ize against patterns and lists, but that was easily resolved by converting my length lists to tuples. The memo dictionary was pretty huge: 154748 items.
+
+I definitely learned something today about using types that hash nicely. And the importance of hashing and memoization in problems that are likely to see a great deal of repetition in their recursion.
