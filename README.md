@@ -125,3 +125,13 @@ Spent far too long trying to debug my raster-distance calculations only to reali
 ### Part 2
 
 Pay-back for using a calculated approach in [part 1](). All I had to do was replace the number `2` with `1000000`.
+
+## Day 12
+
+### Part 1
+
+Had a nice recursive approach here, but tied myself in knots trying to deal with base-cases. Got there in the end and it worked just fine. I was desperately hoping that part 2 wasn't going to be a scaled up version...
+
+### Part 2
+
+Really couldn't see how to get the code to optimise, but a hint to use memoization sent me in the right direction. Had a slight issue because I needed to memo-ize against patterns and lists, but that was easily resolved by converting my length lists to tuples. The memo dictionary was pretty huge: 154748 items.

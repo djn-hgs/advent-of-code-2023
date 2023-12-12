@@ -81,12 +81,5 @@ for i, (p, l) in enumerate(rows):
     total += get_combos(p, l, memo)
     print(f'Row {i} of {row_count}, running total {total}')
 
-# for r, combos in all_combos:
-#     print(f'Row and pattern: {r}')
-#     for c in combos:
-#         print(c)
-#
-#     print(f'There are {len(combos)} combos')
-
-
 print(total)
+print(len(memo))
