@@ -137,3 +137,13 @@ Had a nice recursive approach here, but tied myself in knots trying to deal with
 Oh well... I really couldn't see how to get the code to optimise, but a hint to use memoization sent me in the right direction. Had a slight issue because I needed to memo-ize against patterns and lists, but that was easily resolved by converting my length lists to tuples. The memo dictionary was pretty huge: 154748 items.
 
 I definitely learned something today about using types that hash nicely. And the importance of hashing and memoization in problems that are likely to see a great deal of repetition in their recursion.
+
+## Day 13
+
+### Part 1
+
+After Day 12, I was worried that any not-too elegant solution might lead to pain in Part 2, so I spent a bit too long worrying about finding the most efficient approach. I also interpreted the question to mean that there may be more than one mirror line to deal with. In the end it was enough just to do some slicing and proceed by removing lines of non-symmetry.
+
+### Part 2
+
+Again, I was worried that I might be hitting complexity issues and started wondering how to come up with the most efficient approach. In the end a simple linear search was easily fast enough. The only sticking point was that I forgot a copy of a list of strings would not clone the strings, so a judicious application of `.copy()` sorted that. Not the most elegant code, but the underlying algorithms are ok.'
