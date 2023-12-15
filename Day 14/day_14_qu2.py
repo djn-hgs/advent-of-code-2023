@@ -11,11 +11,15 @@ lines = []
 width = 0
 height = 0
 
-with open('input.txt', 'r') as file:
+scores = []
+
+with open('demo.txt', 'r') as file:
     for line in file.readlines():
         height += 1
         width = max(width, len(line))
         lines.append(line.strip())
+
+lines = tuple(lines)
 
 print(f'Width {width}, height {height}')
 
@@ -41,52 +45,85 @@ def rotate(rows):
     return tuple(''.join(reversed(x)) for x in zip(*rows))
 
 
-n = 1000000
-
-for i in range(4 * n):
-    # print(f'Tilting direction : {directions[i % 4]}')
-
-    # print('Before')
-    # for row in lines:
-    #     print(row)
-
-    lines = roll(lines)
-
-    # print(f'After rotation {i}, so cycle {i // 4}')
-
-    # for row in lines:
-    #     print(row)
-    #
-    # print()
-
-    lines = rotate(lines)
-
-# print('State of play')
-# for row in lines:
-#     print(row)
+@cache
+def score(lines):
+    score = 0
+    for row in lines:
+        for j, c in enumerate(row):
+            if c == 'O':
+                score += len(row) - j
+    return score
 
 
-score = 0
+def show(rows):
+    for row in rows:
+        print(row)
 
-for row in lines:
-    row_len = len(row)
-    searching = True
-    cursor = 0
-    while searching:
-        next_hash = row.find('#', cursor)
 
-        if next_hash == -1:
-            seek_point = row_len
-        else:
-            seek_point = next_hash
+lines = rotate(lines)
+lines = rotate(lines)
 
-        if seek_point > cursor:
-            zeroes = row.count('O', cursor, seek_point)
-            score += (row_len - cursor - zeroes + 1 + row_len - cursor) * zeroes / 2
+print('Starting here\n')
 
-        cursor = seek_point + 1
+show(lines)
 
-        if cursor > len(row) or next_hash == -1:
-            searching = False
+scores = []
 
-print(f'Rotation {i} total score {score}')
+cycle_length = 4
+distance = 10000
+
+seeking_cycle_length = True
+
+while seeking_cycle_length:
+    i = 0
+    print(cycle_length)
+    cycle_spot = {}
+    score_cycle_spot = {}
+
+    seeking_a_cycle = True
+
+    while seeking_a_cycle and i < distance:
+        seeking_a_score_cycle = True
+
+        while seeking_a_score_cycle and i < distance:
+
+            lines = rotate(lines)
+            lines = roll(lines)
+            score_cycle_spot[i % (cycle_length * 2)] = score(lines)
+
+            #print(score_cycle_spot)
+
+            if i > cycle_length * 2:
+                if all(
+                        score_cycle_spot[j] == score_cycle_spot[j + cycle_length]
+                        for j in range(cycle_length)
+                ):
+                    seeking_a_score_cycle = False
+
+            i += 1
+
+        for j in range(cycle_length * 2):
+            lines = rotate(lines)
+            lines = roll(lines)
+
+            cycle_spot[i % (cycle_length * 2)] = lines
+
+            i += 1
+
+        if all(
+                cycle_spot[j] == cycle_spot[j + cycle_length]
+                for j in range(cycle_length)
+        ):
+            print(f'Found a cycle of length {cycle_length} after {i} iterations')
+            seeking_a_cycle = False
+            seeking_cycle_length = False
+    if seeking_cycle_length:
+        cycle_length += 4
+
+score = score(lines)
+
+lines = rotate(lines)
+print(f'Total score {score}')
+print(score_cycle_spot)
+print(score_cycle_spot[(1000000000 - 1) % cycle_length])
+print(score_cycle_spot[(146 - 1) % cycle_length])
