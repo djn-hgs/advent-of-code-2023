@@ -13,7 +13,7 @@ height = 0
 
 scores = []
 
-with open('demo.txt', 'r') as file:
+with open('input.txt', 'r') as file:
     for line in file.readlines():
         height += 1
         width = max(width, len(line))
@@ -120,10 +120,20 @@ while seeking_cycle_length:
     if seeking_cycle_length:
         cycle_length += 4
 
-score = score(lines)
+score_value = score(lines)
 
 lines = rotate(lines)
-print(f'Total score {score}')
+print(f'Total score {score_value}')
 print(score_cycle_spot.values())
 print(score_cycle_spot[(1000000000 - 1) % cycle_length])
 print(score_cycle_spot[(146 - 1) % cycle_length])
+
+for i in range(cycle_length):
+    print(f'Cycle {i}')
+    for i in range(4):
+        print(f'Direction {directions[i]}')
+        print(score(lines))
+        lines = rotate(lines)
+    lines = rotate(lines)
+    lines = roll(lines)
+

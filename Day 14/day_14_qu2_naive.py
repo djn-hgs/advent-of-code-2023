@@ -13,7 +13,7 @@ height = 0
 
 scores = []
 
-with open('demo.txt', 'r') as file:
+with open('input.txt', 'r') as file:
     for line in file.readlines():
         height += 1
         width = max(width, len(line))
@@ -23,10 +23,6 @@ lines = tuple(lines)
 
 print(f'Width {width}, height {height}')
 
-
-@cache
-def transpose(lines):
-    return tuple(''.join(x) for x in zip(*lines))
 
 
 @cache
@@ -46,13 +42,13 @@ def rotate(rows):
 
 
 @cache
-def score(lines):
-    score = 0
-    for row in lines:
+def score(rows):
+    total = 0
+    for row in rows:
         for j, c in enumerate(row):
             if c == 'O':
-                score += len(row) - j
-    return score
+                total += len(row) - j
+    return total
 
 
 def show(rows):
@@ -62,34 +58,29 @@ def show(rows):
 
 lines = rotate(lines)
 lines = rotate(lines)
-#lines = rotate(lines)
-
-print('Starting here\n')
-
-show(lines)
-
-scores = []
-
-n = 1000000000
-
-for i in range(1):
-    #print(f'\nTilting direction : {directions[i % 4]}\n')
-
-    lines = rotate(lines)
-    lines = roll(lines)
-
-    #show(lines)
-
-
-    #scores.append(score(lines))
-
-    # if scores[-4:] == scores[-8:-4]:
-    #     print('Here')
-
-score = score(lines)
-
 lines = rotate(lines)
-print('\nFinal\n')
-show(lines)
-print('Boo')
-print(f'Total score {score}')
+
+cycle_length = 36
+line_register = [0 for i in range(cycle_length * 2)]
+score_register = [0 for i in range(cycle_length * 2)]
+
+for i in range(10000):
+    line_register[i % (cycle_length * 2)] = lines
+    #score_register[i % (cycle_length * 2)] = score(lines)
+
+    if line_register[:cycle_length] == line_register[cycle_length:]:
+        print(f'Cycle when i={i}')
+        break
+
+    for j in range(4):
+        if (i % 4) == j:
+            lines = roll(lines)
+
+        lines = rotate(lines)
+
+
+print([score(lines) for lines in line_register])
+
+our_choice = line_register[(1000000000 * 4) % cycle_length]
+print(score(our_choice))
+
