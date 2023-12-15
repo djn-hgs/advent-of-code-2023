@@ -19,7 +19,7 @@ for row in transposed:
 
         if seek_point > cursor:
             zeroes = row.count('O', cursor, seek_point)
-            print(f'{zeroes} zeroes between {cursor} and {next_hash}')
+            #print(f'{zeroes} zeroes between {cursor} and {next_hash}')
             score += (row_len - cursor - zeroes + 1 + row_len - cursor) * zeroes / 2
 
         cursor = seek_point + 1

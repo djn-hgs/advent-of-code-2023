@@ -124,6 +124,6 @@ score = score(lines)
 
 lines = rotate(lines)
 print(f'Total score {score}')
-print(score_cycle_spot)
+print(score_cycle_spot.values())
 print(score_cycle_spot[(1000000000 - 1) % cycle_length])
 print(score_cycle_spot[(146 - 1) % cycle_length])
