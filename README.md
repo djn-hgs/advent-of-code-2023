@@ -146,4 +146,20 @@ After Day 12, I was worried that any not-too elegant solution might lead to pain
 
 ### Part 2
 
-Again, I was worried that I might be hitting complexity issues and started wondering how to come up with the most efficient approach. In the end a simple linear search was easily fast enough. The only sticking point was that I forgot a copy of a list of strings would not clone the strings, so a judicious application of `.copy()` sorted that. Not the most elegant code, but the underlying algorithms are ok.'
+Again, I was worried that I might be hitting complexity issues and started wondering how to come up with the most efficient approach. In the end a simple linear search was easily fast enough. The only sticking point was that I forgot a copy of a list of strings would not clone the strings, so a judicious application of `.copy()` sorted that. Not the most elegant code, but the underlying algorithms are ok.
+
+## Day 14
+
+### Part 1
+
+This was ok. I was a bit nervous as to where we were headed with Part 2 and therefore tried to come up wih the most "hashable" and time efficient approach, rotating the list (using the cute `zip` trick) and then performing the required operations using text slicing and a lot of `@cache` just in case.
+
+### Part 2
+
+This was pretty much what I was expecting, and the idea was to find a looping sequence. I wrote a reasonably nice algorithm that found cycles by first spotting cycles in the scores and then checking that these were true cycles in the configurations. Annoyingly, having found the cycle, my actual calculation was wrong...
+
+There followed a lot of confused fiddling and, in the end, I altered my calculation code and used the knowledge about the cycle length to get the correct repeating sequence. Once I'd rememberd that 1000000000 cycles corresponded to 1000000000x4 rotations, it all worked.
+ 
+## Day 15
+
+Part 1 was worryingly easy and had me scared that Part 2 was going to have a sting in the tale. I was a little worried about the time complexity of my approach to Part 2 (lists of lists with deletion) but it all worked fine first time.
